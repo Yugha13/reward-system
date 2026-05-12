@@ -13,12 +13,13 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useTheme } from "@/components/layout/ThemeProvider";
-import { Moon, Sun, LayoutDashboard, Users, MessageSquare, Award, Building2, Sparkles, Building } from "lucide-react";
+import { Moon, Sun, LayoutDashboard, Users, MessageSquare, Award, Building2, Sparkles, Building, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
   { title: "Overview", url: "/", icon: LayoutDashboard },
   { title: "Employees", url: "/employees", icon: Users },
+  { title: "Performance Rewards", url: "/performance", icon: TrendingUp },
   { title: "Suggestions", url: "/suggestions", icon: MessageSquare },
   { title: "Rewards", url: "/rewards", icon: Award },
   { title: "Departments", url: "/departments", icon: Building2 },
