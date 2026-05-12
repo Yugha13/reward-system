@@ -127,7 +127,7 @@ function generatePerformanceData(): EmployeePerformance[] {
 
   return employees.map((emp) => {
     const scores = baseScores[emp.id] || { attendance: 50, productivity: 50, teamwork: 50, customer: 50, initiative: 50, skills: 50, compliance: 50 };
-    
+
     const weightedTotal = metricCategories.reduce((sum, cat) => {
       return sum + (scores[cat.id] || 0) * (cat.weight / 100);
     }, 0);
@@ -143,8 +143,8 @@ function generatePerformanceData(): EmployeePerformance[] {
 
     const salaryImpactPercent = totalPoints >= 850 ? 15 :
       totalPoints >= 700 ? 10 :
-      totalPoints >= 550 ? 5 :
-      totalPoints >= 400 ? 2 : 0;
+        totalPoints >= 550 ? 5 :
+          totalPoints >= 400 ? 2 : 0;
 
     const recommendations = generateRecommendations(emp, scores);
 
@@ -164,7 +164,7 @@ function generatePerformanceData(): EmployeePerformance[] {
 
 function generateRecommendations(emp: Employee, scores: Record<string, number>): string[] {
   const recs: string[] = [];
-  
+
   if (scores.attendance < 70) recs.push("⚠️ Improve attendance consistency — consider setting daily check-in reminders");
   if (scores.productivity < 65) recs.push("📊 Enroll in productivity workshop to improve task completion rates");
   if (scores.teamwork < 70) recs.push("🤝 Participate in more cross-department collaboration projects");
@@ -172,13 +172,13 @@ function generateRecommendations(emp: Employee, scores: Record<string, number>):
   if (scores.initiative < 55) recs.push("💡 Submit at least 2 improvement ideas per quarter to boost innovation score");
   if (scores.skills < 60) recs.push("📚 Complete pending certifications and attend scheduled training sessions");
   if (scores.compliance < 80) recs.push("🛡️ Review and adhere to updated company policies and safety protocols");
-  
+
   if (scores.productivity >= 85) recs.push("🏆 Excellent productivity — consider for team lead mentorship role");
   if (scores.customer >= 90) recs.push("🌟 Outstanding customer service — nominate for Customer Champion award");
   if (scores.attendance >= 95) recs.push("✅ Perfect attendance streak — eligible for attendance bonus");
 
   if (recs.length === 0) recs.push("👍 Performance is on track — maintain current momentum");
-  
+
   return recs;
 }
 
@@ -220,7 +220,7 @@ function generateTransactions(employeeId: number, scores: Record<string, number>
   metricCategories.forEach((cat) => {
     const score = scores[cat.id] || 50;
     const catReasons = reasons[cat.id];
-    
+
     // Add 1-2 transactions per category
     if (score >= 70) {
       const reason = catReasons.inc[Math.floor(Math.random() * catReasons.inc.length)];
@@ -234,7 +234,7 @@ function generateTransactions(employeeId: number, scores: Record<string, number>
         type: "increment",
       });
     }
-    
+
     if (score < 75) {
       const reason = catReasons.dec[Math.floor(Math.random() * catReasons.dec.length)];
       transactions.push({
