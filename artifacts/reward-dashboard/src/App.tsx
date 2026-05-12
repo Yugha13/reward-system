@@ -15,6 +15,7 @@ import Suggestions from "@/pages/suggestions";
 import Rewards from "@/pages/rewards";
 import Departments from "@/pages/departments";
 import Recommendations from "@/pages/recommendations";
+import Performance from "@/pages/performance";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ function Router() {
         <Route path="/rewards" component={Rewards} />
         <Route path="/departments" component={Departments} />
         <Route path="/recommendations" component={Recommendations} />
+        <Route path="/performance" component={Performance} />
         <Route component={NotFound} />
       </Switch>
     </AppLayout>
